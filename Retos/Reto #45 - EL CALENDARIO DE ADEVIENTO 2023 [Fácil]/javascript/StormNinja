@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calendario de adviento</title>
+   
+</head>
+
+<body>
+<script>
+var opcion = 0;
+let listaNombres = [];
+let nombres = "";
+
+while (true) {
+  opcion = prompt("-------------------- \n calendario \n -------------------- \n Seleccione una opcion \n 1- Añadir \n 2- Borrar \n 3- Mostrar \n 4- Sorteo \n 5- Salir");
+
+  if (opcion == 1) {
+    var nombre = prompt("Ingrese su nombre");
+
+    if (listaNombres.includes(nombre)) {
+      alert("El nombre ya está registrado");
+    } else {
+      listaNombres.push(nombre);
+    }
+  } else if (opcion == 2) {
+    var nombreBorrar = prompt("Ingrese el nombre a borrar");
+    var index = listaNombres.indexOf(nombreBorrar);
+    
+    if (index !== -1) {
+      listaNombres.splice(index, 1);
+      alert("Nombre eliminado correctamente");
+    } else {
+      alert("El nombre no está en la lista");
+    }
+  } else if (opcion == 3) {
+    nombres = ""; 
+    for (var x = 0; x < listaNombres.length; x++) {
+      nombres += listaNombres[x] + "\n";
+    }
+    alert(nombres);
+  } else if (opcion == 4) {
+    if (listaNombres.length === 0) {
+      alert("No hay nombres registrados");
+    } else {
+        var nombreGanador = rand(listaNombres)
+       var index = listaNombres.indexOf(nombreGanador)
+       alert("El ganador del sorteo es: "+ nombreGanador)
+       listaNombres.splice(index, 1);
+    }
+  } else if (opcion == 5) {
+    document.write("¡Feliz Navidad!");
+    break;
+  } else {
+    alert("No es una opción válida");
+  }
+}
+
+function rand(items) {
+  return items[~~(items.length * Math.random())];
+
+}
+
+
+</script>
+
+<p id="lista"></p>
+</body>
+
+
+	</html>
